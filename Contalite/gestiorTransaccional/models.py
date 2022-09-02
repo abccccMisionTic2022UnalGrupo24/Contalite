@@ -1,9 +1,6 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
-
-# Create your models here.
 class Rol(models.Model):
     id_rol=models.IntegerField(max_length=50, primary_key=True)
     administrador=models.BooleanField(unique=True,null=True)
