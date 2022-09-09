@@ -1,7 +1,7 @@
 from django.db import models
 
 class Empresa(models.Model):
-    nit=models.BigAutoField(unique=True,primary_key=True)
+    nit=models.IntegerField(unique=True,primary_key=True)
     direccion=models.CharField("Direccion",null=False,max_length=100)
     fecha_creacion_emp=models.DateField(auto_now=True)
     nom_emp=models.CharField("Nombre Empresa",null=False, max_length=25)
