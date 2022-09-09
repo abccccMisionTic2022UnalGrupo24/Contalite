@@ -54,7 +54,7 @@ class UserView(View):
         return JsonResponse(mensaje)    
 
     def delete(self,request, id_user):
-        user=list(User.objects.filter(id_tr=id_tr).values())
+        user=list(User.objects.filter(id_user=id_user).values())
         if len(user)>0:
             User.objects.filter(id_user=id_user).delete()
             mensaje={"mensaje":"Usuario eliminado exitosamente."}
