@@ -10,5 +10,5 @@ Para Agregar o modificar trasnacciones el ID del usuario debe existir en el mome
 
 Para agregar empresas no se requiere dato historico( es neceasrio realizar caractrizacion para solo usuarios admin)
 
-Para agregar empleados es necesario que exista el id de empresa el cual esta relacionado con el nit en empresas
+Para agregar empleados es necesario que exista el id de empresa y un id de usuario  el cual esta relacionado con el nit en empresas
 

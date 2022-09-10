@@ -31,7 +31,7 @@ class UserView(View):
 
     def post(self, request):
         data=json.loads(request.body)
-        crear_user= User(id_user=data['id_user'],nom_usu=data['nom_usu'],password=data['password'],email=data['email'],image=data['image'],rol=data['rol'])
+        crear_user= User(nom_usu=data['nom_usu'],password=data['password'],email=data['email'],image=data['image'],admin=data['admin'])
         crear_user.save()
         datos={'mensaje':'Usuario registrado exitosamente'}
         return JsonResponse(datos)   
@@ -41,12 +41,12 @@ class UserView(View):
         user= list(User.objects.filter(id_user=id_user).values())
         if len(user)>0:
             mod_user=User.objects.get(id_user=id_user)
-            mod_user.id_user=data["id_user"]
+            #mod_user.id_user=data["id_user"]
             mod_user.nom_usu=data["nom_usu"]
             mod_user.password=data["password"]
             mod_user.email=data["email"]
             mod_user.image=data["image"]
-            mod_user.rol=data["rol"]
+            mod_user.admin=data["admin"]
             mod_user.save()
             mensaje={"mensaje":"Usuario actualizado exitosamente"}
         else:

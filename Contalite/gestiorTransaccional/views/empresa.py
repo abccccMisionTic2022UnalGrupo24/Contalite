@@ -31,7 +31,7 @@ class EmpresaView(View):
 
     def post(self, request):
         data=json.loads(request.body)
-        crear_empre = Empresa(nit=data['nit'],direccion=data['direccion'],fecha_creacion_emp=data['fecha_creacion_emp'],nom_emp=data['nom_emp'],sec_prod=data['sec_prod'],ciudad=data['ciudad'],telefono=data['telefono'])
+        crear_empre = Empresa(direccion=data['direccion'],fecha_creacion_emp=data['fecha_creacion_emp'],nom_emp=data['nom_emp'],sec_prod=data['sec_prod'],ciudad=data['ciudad'],telefono=data['telefono'])
         crear_empre.save()
         datos={'mensaje':'Empresa registrada exitosamente'}
         return JsonResponse(datos)   
@@ -41,7 +41,7 @@ class EmpresaView(View):
         empre= list(Empresa.objects.filter(nit=nit).values())
         if len(empre)>0:
             mod_empresa=Empresa.objects.get(nit=nit)
-            mod_empresa.nit=data["nit"]
+            #mod_empresa.nit=data["nit"]
             mod_empresa.direccion=data["direccion"]
             mod_empresa.fecha_creacion_emp=data["fecha_creacion_emp"]
             mod_empresa.nom_emp=data["nom_emp"]

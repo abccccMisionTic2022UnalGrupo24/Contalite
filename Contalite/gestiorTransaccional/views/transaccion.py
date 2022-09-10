@@ -32,7 +32,7 @@ class TransaccionView(View):
 
     def post(self, request):
         data=json.loads(request.body)
-        crear_tr = Transaccion(id_tr=data['id_tr'],tipo=data['tipo'],fecha_tr=data['fecha_tr'],usuario_id=data['usuario_id'],concepto=data['concepto'],monto=data['monto'])
+        crear_tr = Transaccion(tipo=data['tipo'],fecha_tr=data['fecha_tr'],usuario_id=data['usuario_id'],concepto=data['concepto'],monto=data['monto'])
         crear_tr.save()
         datos={'mensaje':'Transaccion registrada exitosamente'}
         return JsonResponse(datos)   
@@ -42,7 +42,7 @@ class TransaccionView(View):
         tr= list(Transaccion.objects.filter(id_tr=id_tr).values())
         if len(tr)>0:
             mod_trans=Transaccion.objects.get(id_tr=id_tr)
-            mod_trans.id_tr=data["id_tr"]
+            #mod_trans.id_tr=data["id_tr"]
             mod_trans.tipo=data["tipo"]
             mod_trans.fecha_tr=data["fecha_tr"]
             mod_trans.usuario_id=data["usuario_id"]
