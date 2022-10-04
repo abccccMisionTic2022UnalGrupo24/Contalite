@@ -17,7 +17,7 @@ def regEmp(request):
     else:
         form=registraremp()
         context={'form':form}
-        return render(request, 'crearEmpresa-contalite.html', context)
+        return render(request, 'crearEmpresa.html', context)
 
 @login_required
 def listemp(request):
@@ -47,7 +47,7 @@ def updateemp(request, emp_id):
         if form.is_valid():
             form.save()
         return redirect("http://127.0.0.1:8000/empresas/listar")
-    return render(request, 'crearEmpresa-contalite.html', {'form':form}) 
+    return render(request, 'crearEmpresa.html', {'form':form}) 
 
 @login_required
 def deleteEmp(request, emp_id):
