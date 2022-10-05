@@ -11,7 +11,7 @@ def registerTr(request):
         form=TransaccionForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect ('http://127.0.0.1:8000/transacciones/listar/')
+            return redirect ('/transacciones/listar/')
     else:
         form=TransaccionForm()
     context={ 'form':form}
@@ -35,14 +35,14 @@ def updatetr(request, id_tr):
         form=TransaccionForm(request.POST, instance=Trans)
         if form.is_valid():
             form.save()
-        return redirect("http://127.0.0.1:8000/transacciones/listar")
+        return redirect("/transacciones/listar")
     return render(request, 'crearTransaccion-Contalite.html', {'form':form}) 
 
 @login_required
 def deletetr(request, id_tr):
     tr = Transaccion.objects.get(id_tr=id_tr)
     tr.delete() 
-    return redirect ('http://127.0.0.1:8000/transacciones/listar')
+    return redirect ('/transacciones/listar')
 
 @login_required
 def listtrbyid(request, id_tr):
@@ -53,5 +53,5 @@ def listtrbyid(request, id_tr):
 @login_required
 def consulttr(request):
     id=request.POST['Id']
-    url='http://127.0.0.1:8000/transacciones/listarbyid/'+id
+    url='/transacciones/listarbyid/'+id
     return redirect(url)

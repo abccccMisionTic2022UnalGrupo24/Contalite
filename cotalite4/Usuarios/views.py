@@ -12,7 +12,7 @@ def register(request):
             form.save()
             username = form.cleaned_data['username']
             messages.success(request, f'Usuario {username} creado con exito')
-            return redirect ('http://127.0.0.1:8000/')
+            return redirect ('/')
     else:
         form=RegistrationForm()
     context={ 'form':form}
@@ -25,7 +25,7 @@ def register1(request):
             form.save()
             username = form.cleaned_data['username']
             messages.success(request, f'Usuario {username} creado con exito')
-            return redirect ('http://127.0.0.1:8000/')
+            return redirect ('../listar/')
     else:
         form=RegistrationForm1()
     context={ 'form':form}
@@ -49,14 +49,14 @@ def updateusu(request, id):
         form=RegistrationForm1(request.POST, instance=users)
         if form.is_valid():
             form.save()
-        return redirect("http://127.0.0.1:8000/usuarios/listar")
+        return redirect("/usuarios/listar")
     return render(request, 'registrar1.html', {'form':form}) 
 
 @login_required
 def deleteUser(request, id):
     users = User.objects.get(id=id)
     users.delete()
-    return redirect ('http://127.0.0.1:8000/usuarios/listar')
+    return redirect ('/usuarios/listar')
 
 @login_required
 def listusubyid(request, id):
@@ -67,7 +67,7 @@ def listusubyid(request, id):
 @login_required
 def consultemp(request):
     id=request.POST['Id']
-    url='http://127.0.0.1:8000/usuarios/listarbyid/'+id
+    url='/usuarios/listarbyid/'+id
     return redirect(url)
 
 @login_required
@@ -77,6 +77,6 @@ def adminview(request):
 def logout_request(request):
     logout(request)
     messages.info(request,"Saliste Exitosamente")
-    return redirect ('http://127.0.0.1:8000/accounts/login/')
+    return redirect ('/accounts/login/')
 
  

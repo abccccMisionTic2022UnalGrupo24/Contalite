@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 def home(request):
-    return redirect ('http://127.0.0.1:8000')
+    return redirect ('/')
 
 @login_required
 def regEmp(request):
@@ -13,7 +13,7 @@ def regEmp(request):
         form = registraremp(request.POST)
         if form.is_valid():
             form.save()
-            return redirect ('http://127.0.0.1:8000/empresas/listar/')
+            return redirect ('/empresas/listar/')
     else:
         form=registraremp()
         context={'form':form}
@@ -34,7 +34,7 @@ def listempbyid(request, emp_id):
 @login_required
 def consultemp(request):
     id=request.POST['Id']
-    url='http://127.0.0.1:8000/empresas/listarbyid/'+id
+    url='/empresas/listarbyid/'+id
     return redirect(url)
 
 @login_required
@@ -46,14 +46,14 @@ def updateemp(request, emp_id):
         form=registraremp(request.POST, instance=emp)
         if form.is_valid():
             form.save()
-        return redirect("http://127.0.0.1:8000/empresas/listar")
+        return redirect("/empresas/listar")
     return render(request, 'crearEmpresa.html', {'form':form}) 
 
 @login_required
 def deleteEmp(request, emp_id):
     Emp = Empresa.objects.get(emp_id=emp_id)
     Emp.delete()
-    return redirect ('http://127.0.0.1:8000/empresas/listar')
+    return redirect ('/empresas/listar')
 
 
 
